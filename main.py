@@ -1,8 +1,6 @@
 import random
 from collections.abc import Iterable
 
-import pyinputplus as pyip  # type: ignore
-
 from characters import Character, BART, HOMER
 
 
@@ -31,7 +29,7 @@ def start_battle(player: Character, computer: Character) -> None:
     print(f"{computer.image}\n{computer}\nHP: {computer.hp}/{computer.max_hp}")
 
 
-def attack(attacker, defender):
+def attack(attacker: Character, defender: Character) -> None:
     # clear()
     defender_original_hp = defender.hp
     damage = attacker.attack(defender)
@@ -65,8 +63,7 @@ while fighting:
 
     if defender.hp <= 0:
         fighting = False
-        break
-
-    attacker, defender = defender, attacker
+    else:
+        attacker, defender = defender, attacker
 
 print(f"{defender} was murdered!  {attacker} wins!")
